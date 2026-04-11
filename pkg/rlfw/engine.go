@@ -14,7 +14,7 @@ func NewEngine(cfg Config) (*Engine, error) {
 
 	rl.SetConfigFlags(cfg.WinMode)
 
-	if cfg.WinW <= 0 || cfg.WinH <= 0 {
+	if (cfg.WinW <= 0 || cfg.WinH <= 0) && cfg.WinMode&rl.FlagFullscreenMode == 0 {
 		return nil, errors.New("bad window size")
 	}
 
